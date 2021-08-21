@@ -63,12 +63,26 @@ $(document).ready(function () {
       return feature;
     });
     if (feature) {
-      content.innerHTML = feature.get("acq_date");
+
+      // if we're hovering over a feature, display feature information
+      let popupContent = `
+        acq_date: ${feature.get("acq_date")}
+        <br>
+        frp: ${feature.get("frp")}
+        <br>
+        TEMP_ave: ${feature.get("TEMP_ave")}
+        <br>
+        WSPD_ave: ${feature.get("WSPD_ave")}
+      `;
+      content.innerHTML = popupContent;
       //console.log(feature.get("acq_date"));
       //console.log(feature.get("acq_time"));
       // set pos of overlay at click coordinate
       const coordinate = evt.coordinate;
       overlay.setPosition(coordinate);
+    } else {
+      overlay.setPosition(undefined);
+      closer.blur();
     }
   });
 
