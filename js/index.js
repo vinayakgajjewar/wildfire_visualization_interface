@@ -20,10 +20,9 @@ closer.onclick = function () {
 }
 
 var style = new ol.style.Style({
-  image: new ol.style.Circle({
-    radius: 5,
-    fill: null,
-    stroke: new ol.style.Stroke({color: "red", width: 1})
+  image: new ol.style.Icon({
+    scale: 0.05,
+    src: "data/media/wildfire_icon.png"
   })
 });
 
