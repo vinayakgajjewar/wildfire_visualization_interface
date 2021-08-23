@@ -45,7 +45,7 @@ $(document).ready(function () {
           tileSize: [256, 256],
           attributions: '<a href="https://davinci.cs.ucr.edu">&copy;DaVinci</a>'
         }),
-        maxZoom: 12
+        maxZoom: 9
       })
     ],
     overlays: [overlay],
@@ -95,7 +95,7 @@ $(document).ready(function () {
 
     // make vector layer using geojson obj
     let vLayer = new ol.layer.Vector({
-      //minZoom: 12,
+      minZoom: 9,
       source: new ol.source.Vector({
         // featureProjection: "EPSG:3857"} is necessary for the code to work with UCR-Star data
         features: new ol.format.GeoJSON({featureProjection: "EPSG:3857"}).readFeatures(geoJSONObj)
