@@ -50,8 +50,8 @@ $(document).ready(function () {
     ],
     overlays: [overlay],
     view: new ol.View({
-      center: [0, 0],
-      zoom: 1
+      center: [-13694686.259677762, 4715193.587946976],
+      zoom: 6
     })
   });
 
@@ -84,14 +84,15 @@ $(document).ready(function () {
       // reset bottom info
       document.getElementById("acq_date").innerHTML = "";
     } else {
-      overlay.setPosition(undefined);
-      closer.blur();
+      //overlay.setPosition(undefined);
+      //closer.blur();
     }
   });
 
   // on singleclick, display current feature info at bottom of map
   map.on("singleclick", function (evt) {
     var p = evt.pixel;
+    console.log(evt.coordinate);
     var feature = map.forEachFeatureAtPixel(p, function(feature) {
       return feature;
     });

@@ -5,6 +5,10 @@
     <title>Wildfire Visualization</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.6.1/css/ol.css" type="text/css">
     <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.6.1/build/ol.js"></script>
+
+    <!--bulma css framework-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+
     <style>
       .map {
         width: 100%;
@@ -56,18 +60,17 @@
   <body>
 
     <!--header-->
+    <section class="hero">
+      <div class="hero-body">
+        <p class="title">Wildfire Visualization Interface</p>
+        <p class="subtitle">Vinayak Gajjewar, Samriddhi Singla, Dr. Ahmed Eldawy</p>
+      </div>
+    </section>
 
-    <!--map-->
-    <div id="map" class="map"></div>
-
-    <!--popup-->
-    <div id="popup" class="ol-popup">
-      <a href="#" id="popup-closer" class="ol-popup-closer"></a>
-      <div id="popup-content"></div>
-    </div>
-
-    <!--feature info div-->
-    <div id="feature-info">
+    <div class="columns ml-4 mr-4">
+      <div class="column">
+        <!--feature info div-->
+    <div id="feature-info" class="box">
       <p>acq_date: <span id="acq_date">4</span></p>
       <p>acq_time: <span id="acq_time">4</span></p>
       <p>frp: <span id="frp">4</span></p>
@@ -86,6 +89,17 @@
       <p>ELEV_mode: <span id="ELEV_mode">4</span></p>
       <p>ELEV_sum: <span id="ELEV_sum">4</span></p>
       <p>ELEV_mean: <span id="ELEV_mean">4</span></p>
+    </div>
+      </div>
+      <div class="column">
+        <!--map-->
+        <div id="map" class="map box"></div>
+        <!--popup-->
+        <div id="popup" class="ol-popup">
+          <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+          <div id="popup-content"></div>
+        </div>
+      </div>
     </div>
 
     <!--jQuery 3.6.0-->
