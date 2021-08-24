@@ -8,7 +8,7 @@
     <style>
       .map {
         width: 100%;
-        height: 800px;
+        height: 400px;
       }
       .ol-popup {
         position: absolute;
@@ -54,12 +54,38 @@
     </style>
   </head>
   <body>
+
+    <!--header-->
+
+    <!--map-->
     <div id="map" class="map"></div>
 
     <!--popup-->
     <div id="popup" class="ol-popup">
       <a href="#" id="popup-closer" class="ol-popup-closer"></a>
       <div id="popup-content"></div>
+    </div>
+
+    <!--feature info div-->
+    <div id="feature-info">
+      <p>acq_date: <span id="acq_date">4</span></p>
+      <p>acq_time: <span id="acq_time">4</span></p>
+      <p>frp: <span id="frp">4</span></p>
+      <p>TEMP_ave: <span id="TEMP_ave">4</span></p>
+      <p>TEMP_min: <span id="TEMP_min">4</span></p>
+      <p>TEMP_max: <span id="TEMP_max">4</span></p>
+      <p>PRCP: <span id="PRCP">4</span></p>
+      <p>SNOW: <span id="SNOW">4</span></p>
+      <p>WDIR_ave: <span id="WDIR_ave">4</span></p>
+      <p>WSPD_ave: <span id="WSPD_ave">4</span></p>
+      <p>PRES_ave: <span id="PRES_ave">4</span></p>
+      <p>WCOMP: <span id="WCOMP">4</span></p>
+      <p>ELEV_max: <span id="ELEV_max">4</span></p>
+      <p>ELEV_min: <span id="ELEV_min">4</span></p>
+      <p>ELEV_median: <span id="ELEV_median">4</span></p>
+      <p>ELEV_mode: <span id="ELEV_mode">4</span></p>
+      <p>ELEV_sum: <span id="ELEV_sum">4</span></p>
+      <p>ELEV_mean: <span id="ELEV_mean">4</span></p>
     </div>
 
     <!--jQuery 3.6.0-->

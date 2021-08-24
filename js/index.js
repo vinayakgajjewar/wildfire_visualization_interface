@@ -80,9 +80,42 @@ $(document).ready(function () {
       // set pos of overlay at click coordinate
       const coordinate = evt.coordinate;
       overlay.setPosition(coordinate);
+
+      // reset bottom info
+      document.getElementById("acq_date").innerHTML = "";
     } else {
       overlay.setPosition(undefined);
       closer.blur();
+    }
+  });
+
+  // on singleclick, display current feature info at bottom of map
+  map.on("singleclick", function (evt) {
+    var p = evt.pixel;
+    var feature = map.forEachFeatureAtPixel(p, function(feature) {
+      return feature;
+    });
+    if (feature) {
+
+      // if we're clicking on a feature, display more info at the bottom
+      document.getElementById("acq_date").innerHTML = feature.get("acq_date");
+      document.getElementById("acq_time").innerHTML = feature.get("acq_time");
+      document.getElementById("frp").innerHTML = feature.get("frp");
+      document.getElementById("TEMP_ave").innerHTML = feature.get("TEMP_ave");
+      document.getElementById("TEMP_min").innerHTML = feature.get("TEMP_min");
+      document.getElementById("TEMP_max").innerHTML = feature.get("TEMP_max");
+      document.getElementById("PRCP").innerHTML = feature.get("PRCP");
+      document.getElementById("SNOW").innerHTML = feature.get("SNOW");
+      document.getElementById("WDIR_ave").innerHTML = feature.get("WDIR_ave");
+      document.getElementById("WSPD_ave").innerHTML = feature.get("WSPD_ave");
+      document.getElementById("PRES_ave").innerHTML = feature.get("PRES_ave");
+      document.getElementById("WCOMP").innerHTML = feature.get("WCOMP");
+      document.getElementById("ELEV_max").innerHTML = feature.get("ELEV_max");
+      document.getElementById("ELEV_min").innerHTML = feature.get("ELEV_min");
+      document.getElementById("ELEV_median").innerHTML = feature.get("ELEV_median");
+      document.getElementById("ELEV_mode").innerHTML = feature.get("ELEV_mode");
+      document.getElementById("ELEV_sum").innerHTML = feature.get("ELEV_sum");
+      document.getElementById("ELEV_mean").innerHTML = feature.get("ELEV_mean");
     }
   });
 
