@@ -159,10 +159,9 @@ $(document).ready(function () {
     }
   });
 
+  // make dynamic GET request at end of map move event
   map.on("moveend", function() {
-    console.log("----finished moving");
     makeDynamicGETRequest(map);
-    
   });
 
   makeDynamicGETRequest(map);
