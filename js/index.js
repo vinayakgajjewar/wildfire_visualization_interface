@@ -120,9 +120,63 @@ $(document).ready(function () {
     }
   });
 
+  map.on("moveend", function() {
+    console.log("----finished moving");
+
+    // get geojson data
+  var url = "http://localhost:8080/vectors/states.geojson";
+
+  // extents object to send to back-end
+  let extentsObj = {
+    minx: map.getView().calculateExtent()[0],
+    miny: map.getView().calculateExtent()[1],
+    maxx: map.getView().calculateExtent()[2],
+    maxy: map.getView().calculateExtent()[3]
+  };
+
+  // make GET request with extents
+  $.get(url, extentsObj, function (data, status) {
+
+    // clear all current vector layers first
+    //map.setLayerGroup([]);
+
+    // add geospatial data to map
+    let geoJSONObj = data;
+
+    // make vector layer using geojson obj
+    let vLayer = new ol.layer.Vector({
+      minZoom: 9,
+      source: new ol.source.Vector({
+        // featureProjection: "EPSG:3857"} is necessary for the code to work with UCR-Star data
+        features: new ol.format.GeoJSON({featureProjection: "EPSG:3857"}).readFeatures(geoJSONObj)
+      }),
+      style: function(feature) {
+        //style.getText().setText(feature.get("NAME"));
+        return style;
+      }
+    });
+    
+    // add vector layer to map
+    map.addLayer(vLayer);
+  });
+  });
+
   // get geojson data
   var url = "http://localhost:8080/vectors/states.geojson";
-  $.get(url, function (data, status) {
+
+  // extents object to send to back-end
+  let extentsObj = {
+    minx: map.getView().calculateExtent()[0],
+    miny: map.getView().calculateExtent()[1],
+    maxx: map.getView().calculateExtent()[2],
+    maxy: map.getView().calculateExtent()[3]
+  };
+
+  // make GET request with extents
+  $.get(url, extentsObj, function (data, status) {
+
+    // clear all current vector layers first
+    //map.get
 
     // add geospatial data to map
     let geoJSONObj = data;
