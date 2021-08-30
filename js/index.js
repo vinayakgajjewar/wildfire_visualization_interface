@@ -163,6 +163,4 @@ $(document).ready(function () {
   map.on("moveend", function() {
     makeDynamicGETRequest(map);
   });
-
-  makeDynamicGETRequest(map);
 });
