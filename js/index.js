@@ -31,12 +31,22 @@ function makeDynamicGETRequest(map) {
   var url = "http://localhost:8080/vectors/states.geojson";
 
   // extents object to send to back-end
+  minx = map.getView().calculateExtent()[0];
+  miny = map.getView().calculateExtent()[1];
+  maxx = map.getView().calculateExtent()[2];
+  maxy = map.getView().calculateExtent()[3];
+
+  //console.log(ol.proj.toLonLat([minx, miny]));
+  //console.log(ol.proj.toLonLat([maxx, maxy]));
+
   let extentsObj = {
-    minx: map.getView().calculateExtent()[0],
-    miny: map.getView().calculateExtent()[1],
-    maxx: map.getView().calculateExtent()[2],
-    maxy: map.getView().calculateExtent()[3]
+    minx: ol.proj.toLonLat([minx, miny])[0],
+    miny: ol.proj.toLonLat([minx, miny])[1],
+    maxx: ol.proj.toLonLat([maxx, maxy])[0],
+    maxy: ol.proj.toLonLat([maxx, maxy])[1]
   };
+
+  console.log(extentsObj);
 
   // make GET request with extents
   $.get(url, extentsObj, function (data, status) {
