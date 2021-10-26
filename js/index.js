@@ -26,6 +26,14 @@ var style = new ol.style.Style({
   })
 });
 
+// style object for polygons
+var polygonStyle = new ol.style.Style({
+  stroke: new ol.style.Stroke({
+    color: "ff00ff",
+    width: 1
+  })
+});
+
 function makeDynamicGETRequest(map) {
   // get geojson data
   var url = "http://localhost:8080/vectors/states.geojson";
@@ -66,7 +74,7 @@ function makeDynamicGETRequest(map) {
       }),
       style: function(feature) {
         //style.getText().setText(feature.get("NAME"));
-        return style;
+        return polygonStyle;
       }
     });
     
