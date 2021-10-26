@@ -133,23 +133,20 @@ $(document).ready(function () {
 
       // if we're hovering over a feature, display feature information
       let popupContent = `
-        acq_date: ${feature.get("acq_date")}
+        Acres: ${feature.get("Acres")}
         <br>
-        frp: ${feature.get("frp")}
+        County: ${feature.get("County")}
         <br>
-        TEMP_ave: ${feature.get("TEMP_ave")}
+        Crop2014: ${feature.get("Crop2014")}
         <br>
-        WSPD_ave: ${feature.get("WSPD_ave")}
+        Date_Data_: ${feature.get("Date_Data_")}
       `;
       content.innerHTML = popupContent;
-      //console.log(feature.get("acq_date"));
-      //console.log(feature.get("acq_time"));
+
       // set pos of overlay at click coordinate
       const coordinate = evt.coordinate;
       overlay.setPosition(coordinate);
 
-      // reset bottom info
-      document.getElementById("acq_date").innerHTML = "";
     } else {
       //overlay.setPosition(undefined);
       //closer.blur();
@@ -166,24 +163,10 @@ $(document).ready(function () {
     if (feature) {
 
       // if we're clicking on a feature, display more info at the bottom
-      document.getElementById("acq_date").innerHTML = feature.get("acq_date");
-      document.getElementById("acq_time").innerHTML = feature.get("acq_time");
-      document.getElementById("frp").innerHTML = feature.get("frp");
-      document.getElementById("TEMP_ave").innerHTML = feature.get("TEMP_ave");
-      document.getElementById("TEMP_min").innerHTML = feature.get("TEMP_min");
-      document.getElementById("TEMP_max").innerHTML = feature.get("TEMP_max");
-      document.getElementById("PRCP").innerHTML = feature.get("PRCP");
-      document.getElementById("SNOW").innerHTML = feature.get("SNOW");
-      document.getElementById("WDIR_ave").innerHTML = feature.get("WDIR_ave");
-      document.getElementById("WSPD_ave").innerHTML = feature.get("WSPD_ave");
-      document.getElementById("PRES_ave").innerHTML = feature.get("PRES_ave");
-      document.getElementById("WCOMP").innerHTML = feature.get("WCOMP");
-      document.getElementById("ELEV_max").innerHTML = feature.get("ELEV_max");
-      document.getElementById("ELEV_min").innerHTML = feature.get("ELEV_min");
-      document.getElementById("ELEV_median").innerHTML = feature.get("ELEV_median");
-      document.getElementById("ELEV_mode").innerHTML = feature.get("ELEV_mode");
-      document.getElementById("ELEV_sum").innerHTML = feature.get("ELEV_sum");
-      document.getElementById("ELEV_mean").innerHTML = feature.get("ELEV_mean");
+      document.getElementById("acres").innerHTML = feature.get("Acres");
+      document.getElementById("county").innerHTML = feature.get("County");
+      document.getElementById("crop2014").innerHTML = feature.get("Crop2014");
+      document.getElementById("date").innerHTML = feature.get("Date_Data_");
     }
   });
 /*
