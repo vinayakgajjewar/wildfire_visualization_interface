@@ -54,22 +54,29 @@ function makeDynamicGETRequest(map) {
     maxy: ol.proj.toLonLat([maxx, maxy])[1]
   };
 
+  console.log("extents:");
   console.log(extentsObj);
 
   // make GET request with extents
   $.get(url, extentsObj, function (data, status) {
+
+    console.log("status:");
+    console.log(status);
 
     // clear all current vector layers first
     //map.setLayerGroup([]);
 
     // add geospatial data to map
     let geoJSONObj = data;
+    console.log("geoJSONObj");
+    console.log(geoJSONObj);
 
     // make vector layer using geojson obj
     let vLayer = new ol.layer.Vector({
-      minZoom: 9,
+      // temporarily commented out
+      //minZoom: 9,
       source: new ol.source.Vector({
-        // featureProjection: "EPSG:3857"} is necessary for the code to work with UCR-Star data
+        // {featureProjection: "EPSG:3857"} is necessary for the code to work with UCR-Star data
         features: new ol.format.GeoJSON({featureProjection: "EPSG:3857"}).readFeatures(geoJSONObj)
       }),
       style: function(feature) {
@@ -96,14 +103,15 @@ $(document).ready(function () {
       }),
 
       // multilevel visualization
-      new ol.layer.Tile({
+      // TEMPORARILY REMOVED
+      /*new ol.layer.Tile({
         source: new ol.source.XYZ({
           url: "data/multilevel/tile-{z}-{x}-{y}.png",
           tileSize: [256, 256],
           attributions: '<a href="https://davinci.cs.ucr.edu">&copy;DaVinci</a>'
         }),
         maxZoom: 9
-      })
+      })*/
     ],
     overlays: [overlay],
     view: new ol.View({
@@ -111,6 +119,8 @@ $(document).ready(function () {
       zoom: 6
     })
   });
+
+  makeDynamicGETRequest(map);
 
   // add hover handler to render popup
   map.on("pointermove", function (evt) {
@@ -176,9 +186,9 @@ $(document).ready(function () {
       document.getElementById("ELEV_mean").innerHTML = feature.get("ELEV_mean");
     }
   });
-
+/*
   // make dynamic GET request at end of map move event
   map.on("moveend", function() {
     makeDynamicGETRequest(map);
-  });
+  });*/
 });
