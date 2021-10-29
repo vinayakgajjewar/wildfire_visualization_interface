@@ -64,7 +64,7 @@
 
 
     <div class="columns is-gapless">
-      <div class="column is-one-fifth">
+      <div class="column is-one-fifth mx-6 mt-6">
 
         <!--title-->
         <h1 class="title">Wildfire Data Explorer</h1>
@@ -75,11 +75,16 @@
         <div class="field">
           <label class="label">Soil depth (cm.)</label>
           <div class="control">
-            <div class="select ml-6">
+            <div class="select">
               <select>
                 <option>0-5</option>
                 <option>5-10</option>
                 <option>15-20</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
         <!--layer select-->
         <div class="field">
           <label class="label">Layer</label>
@@ -98,9 +103,9 @@
 
         <!--aggregation select-->
         <div class="field">
-          <label class="label ml-6">Aggregation</label>
+          <label class="label">Aggregation</label>
           <div class="control">
-            <div class="select ml-6">
+            <div class="select">
               <select>
                 <option>Minimum</option>
                 <option>Maximum</option>
@@ -113,7 +118,7 @@
         <hr>
 
         <!--feature info div-->
-        <div id="feature-info" class="ml-6">
+        <div id="feature-info">
           <label class="label">Acres: <span id="acres" class="has-text-info"></span></label>
           <label class="label">County: <span id="county" class="has-text-info"></span></label>
           <label class="label">Crop (2014): <span id="crop2014" class="has-text-info"></span></label>
