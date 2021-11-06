@@ -171,7 +171,10 @@ $(document).ready(function () {
   });
 /*
   // make dynamic GET request at end of map move event
+  // only want to make request if zoom level is high enough
   map.on("moveend", function() {
-    makeDynamicGETRequest(map);
-  });*/
+    if (map.getView().getZoom() >= 12) {
+      makeDynamicGETRequest(map);
+    }
+  });
 });
