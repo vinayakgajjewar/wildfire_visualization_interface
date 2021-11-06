@@ -120,7 +120,7 @@ $(document).ready(function () {
     })
   });
 
-  makeDynamicGETRequest(map);
+  //makeDynamicGETRequest(map);
 
   // add hover handler to render popup
   map.on("pointermove", function (evt) {
