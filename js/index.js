@@ -104,7 +104,7 @@ $(document).ready(function () {
 
       // multilevel visualization
       // TEMPORARILY REMOVED
-      /*new ol.layer.Tile({
+      new ol.layer.Tile({
         source: new ol.source.XYZ({
           url: "data/multilevel/tile-{z}-{x}-{y}.png",
           tileSize: [256, 256],
@@ -169,7 +169,7 @@ $(document).ready(function () {
       document.getElementById("date").innerHTML = feature.get("Date_Data_");
     }
   });
-/*
+
   // make dynamic GET request at end of map move event
   // only want to make request if zoom level is high enough
   map.on("moveend", function() {
