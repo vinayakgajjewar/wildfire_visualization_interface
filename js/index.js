@@ -44,8 +44,6 @@ function makeDynamicGETRequest(map) {
   maxx = map.getView().calculateExtent()[2];
   maxy = map.getView().calculateExtent()[3];
 
-  //console.log(ol.proj.toLonLat([minx, miny]));
-  //console.log(ol.proj.toLonLat([maxx, maxy]));
 
   let extentsObj = {
     minx: ol.proj.toLonLat([minx, miny])[0],
