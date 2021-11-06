@@ -74,7 +74,7 @@ function makeDynamicGETRequest(map) {
     // make vector layer using geojson obj
     let vLayer = new ol.layer.Vector({
       // temporarily commented out
-      //minZoom: 9,
+      minZoom: 12,
       source: new ol.source.Vector({
         // {featureProjection: "EPSG:3857"} is necessary for the code to work with UCR-Star data
         features: new ol.format.GeoJSON({featureProjection: "EPSG:3857"}).readFeatures(geoJSONObj)
@@ -110,8 +110,8 @@ $(document).ready(function () {
           tileSize: [256, 256],
           attributions: '<a href="https://davinci.cs.ucr.edu">&copy;DaVinci</a>'
         }),
-        maxZoom: 9
-      })*/
+        maxZoom: 12
+      })
     ],
     overlays: [overlay],
     view: new ol.View({
