@@ -81,7 +81,7 @@ function makeDynamicGETRequest(map) {
       }),
       style: function(feature) {
         //style.getText().setText(feature.get("NAME"));
-        return polygonStyle;
+        return style;
       }
     });
     
