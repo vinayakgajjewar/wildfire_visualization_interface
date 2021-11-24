@@ -101,10 +101,9 @@ $(document).ready(function () {
       }),
 
       // multilevel visualization
-      // TEMPORARILY REMOVED
       new ol.layer.Tile({
         source: new ol.source.XYZ({
-          url: "data/multilevel/tile-{z}-{x}-{y}.png",
+          url: "data/multilevel/wildfire_visualization_4326_reversed/tile-{z}-{x}-{y}.png",
           tileSize: [256, 256],
           attributions: '<a href="https://davinci.cs.ucr.edu">&copy;DaVinci</a>'
         }),
@@ -131,13 +130,13 @@ $(document).ready(function () {
 
       // if we're hovering over a feature, display feature information
       let popupContent = `
-        Acres: ${feature.get("Acres")}
+        acq_date: ${feature.get("acq_date")}
         <br>
-        County: ${feature.get("County")}
+        frp: ${feature.get("frp")}
         <br>
-        Crop2014: ${feature.get("Crop2014")}
+        TEMP_ave: ${feature.get("TEMP_ave")}
         <br>
-        Date_Data_: ${feature.get("Date_Data_")}
+        WSPD_ave: ${feature.get("WSPD_ave")}
       `;
       content.innerHTML = popupContent;
 
@@ -161,10 +160,14 @@ $(document).ready(function () {
     if (feature) {
 
       // if we're clicking on a feature, display more info at the bottom
-      document.getElementById("acres").innerHTML = feature.get("Acres");
+      /*document.getElementById("acres").innerHTML = feature.get("Acres");
       document.getElementById("county").innerHTML = feature.get("County");
       document.getElementById("crop2014").innerHTML = feature.get("Crop2014");
-      document.getElementById("date").innerHTML = feature.get("Date_Data_");
+      document.getElementById("date").innerHTML = feature.get("Date_Data_");*/
+      document.getElementById("acq_date").innerHTML = feature.get("acq_date");
+      document.getElementById("frp").innerHTML = feature.get("frp");
+      document.getElementById("TEMP_ave").innerHTML = feature.get("TEMP_ave");
+      document.getElementById("WSPD_ave").innerHTML = feature.get("WSPD_ave");
     }
   });
 
