@@ -36,7 +36,7 @@ var polygonStyle = new ol.style.Style({
 
 function makeDynamicGETRequest(map) {
   // get geojson data
-  var url = "http://localhost:8080/vectors/states.geojson";
+  var url = "http://localhost:8080/raptor-backend-0.1-SNAPSHOT/vectors/states.geojson";
 
   // extents object to send to back-end
   minx = map.getView().calculateExtent()[0];
