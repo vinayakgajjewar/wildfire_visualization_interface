@@ -21,8 +21,8 @@ closer.onclick = function () {
 
 var style = new ol.style.Style({
   image: new ol.style.Icon({
-    scale: 0.05,
-    src: "data/media/wildfire_icon.png"
+    scale: 0.02,
+    src: "data/media/new_wildfire_icon.png"
   })
 });
 
