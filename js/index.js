@@ -35,56 +35,27 @@ var polygonStyle = new ol.style.Style({
 });
 
 function makeDynamicGETRequest(map) {
-  // get geojson data
-  var url = "http://localhost:8080/raptor-backend-0.1-SNAPSHOT/vectors/states.geojson";
 
-  // extents object to send to back-end
+  // base URL
+  var baseURL = "http://localhost:8080/raptor-backend-0.1-SNAPSHOT/vectors/states.geojson";
+
+  // extents
   minx = map.getView().calculateExtent()[0];
   miny = map.getView().calculateExtent()[1];
   maxx = map.getView().calculateExtent()[2];
   maxy = map.getView().calculateExtent()[3];
 
+  // generate url with extents parameters
+  // we use ol.proj.toLonLat() to convert from pixel coordinates to longitude/latitude
+  var url = baseURL + "?minx=" + ol.proj.toLonLat([minx, miny])[0] + "&miny=" + ol.proj.toLonLat([minx, miny])[1] + "&maxx=" + ol.proj.toLonLat([maxx, maxy])[0] + "&maxy=" + ol.proj.toLonLat([maxx, maxy])[1];
 
-  let extentsObj = {
-    minx: ol.proj.toLonLat([minx, miny])[0],
-    miny: ol.proj.toLonLat([minx, miny])[1],
-    maxx: ol.proj.toLonLat([maxx, maxy])[0],
-    maxy: ol.proj.toLonLat([maxx, maxy])[1]
-  };
-
-  console.log("extents:");
-  console.log(extentsObj);
-
-  // make GET request with extents
-  $.get(url, extentsObj, function (data, status) {
-
-    console.log("status:");
-    console.log(status);
-
-    // clear all current vector layers first
-    //map.setLayerGroup([]);
-
-    // add geospatial data to map
-    let geoJSONObj = data;
-    console.log("geoJSONObj");
-    console.log(geoJSONObj);
-
-    // make vector layer using geojson obj
-    let vLayer = new ol.layer.Vector({
-      // temporarily commented out
-      minZoom: 12,
-      source: new ol.source.Vector({
-        // {featureProjection: "EPSG:3857"} is necessary for the code to work with UCR-Star data
-        features: new ol.format.GeoJSON({featureProjection: "EPSG:3857"}).readFeatures(geoJSONObj)
-      }),
-      style: function(feature) {
-        //style.getText().setText(feature.get("NAME"));
-        return style;
-      }
-    });
-    
-    // add vector layer to map
-    map.addLayer(vLayer);
+  // iterate through all layers in map
+  // when we find our vector layer, set its url to updated url with extents parameters
+  map.getLayers().forEach(function (layer) {
+    if (layer instanceof ol.layer.Vector) {
+      layer.getSource().setUrl(url);
+      layer.getSource().refresh();
+    }
   });
 }
 
@@ -108,6 +79,17 @@ $(document).ready(function () {
           attributions: '<a href="https://davinci.cs.ucr.edu">&copy;DaVinci</a>'
         }),
         maxZoom: 12
+      }),
+
+      // empty vector layer
+      new ol.layer.Vector({
+        minZoom: 12,
+        source: new ol.source.Vector({
+          format: new ol.format.GeoJSON({featureProjection: "EPSG:3857"})
+        }),
+        style: function(feature) {
+          return style;
+        }
       })
     ],
     overlays: [overlay],
