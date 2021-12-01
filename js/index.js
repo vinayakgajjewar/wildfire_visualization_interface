@@ -158,15 +158,13 @@ $(document).ready(function () {
       return feature;
     });
     if (feature) {
-
-      // if we're clicking on a feature, display more info at the bottom
-      /*document.getElementById("acres").innerHTML = feature.get("Acres");
-      document.getElementById("county").innerHTML = feature.get("County");
-      document.getElementById("crop2014").innerHTML = feature.get("Crop2014");
-      document.getElementById("date").innerHTML = feature.get("Date_Data_");*/
+      // if we're clicking on a feature, display more info on the side
       document.getElementById("acq_date").innerHTML = feature.get("acq_date");
+      document.getElementById("acq_time").innerHTML = feature.get("acq_time");
       document.getElementById("frp").innerHTML = feature.get("frp");
       document.getElementById("TEMP_ave").innerHTML = feature.get("TEMP_ave");
+      document.getElementById("TEMP_min").innerHTML = feature.get("TEMP_min");
+      document.getElementById("TEMP_max").innerHTML = feature.get("TEMP_max");
       document.getElementById("WSPD_ave").innerHTML = feature.get("WSPD_ave");
     }
   });
