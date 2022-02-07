@@ -37,7 +37,8 @@ var polygonStyle = new ol.style.Style({
 function makeDynamicGETRequest(map) {
 
   // base URL
-  var baseURL = "http://localhost:8080/raptor-backend-0.1-SNAPSHOT/vectors/states.geojson";
+  var baseURL = "http://localhost:8080/raptor-backend-0.1-SNAPSHOT/vectors/wildfire.geojson";
+  //var baseURL = "http://localhost:8080/vectors/wildfire.geojson";
 
   // extents
   minx = map.getView().calculateExtent()[0];
